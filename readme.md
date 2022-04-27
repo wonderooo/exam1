@@ -54,7 +54,7 @@ Do oznaczania releasów używamy tagów
 
 - użytkownik poza informacją o tworzeniu strony ma po odświeżeniu pokazywać aktualną datę i godzinę (z dokładnością do sekundy) - korzystamy z właściwej funkcji PHP
 
-## Release 0.2
+### Release 0.2
 
 - utwórz katalog `./images` 
 
@@ -114,13 +114,13 @@ Do oznaczania releasów używamy tagów
 
 - przechodzenie działa na zasadzie pętli, więc gdy wyświetla pierwszy rekord, to przejście do poprzedniego zdjęcia przenosi go do ostatniego
 
-## Release 0.6
+### Release 0.6
 
 - na stronie głównej dodaj paging - na stronie jednocześnie ma się pojawić 8 rekordów
 
 - paging ma działać dla dowolnej liczby rekordów w bazie
 
-## Release 0.7
+### Release 0.7
 
 - przy powrocie z view dla danego rekordu upewnij się, że użytkownik wraca na właściwą stronę zdjęć (czyli do tej 8-mki zdjęć, w której znajduje się zdjęcie, z którego wraca do strony głównej)
 
