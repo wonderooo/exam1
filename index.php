@@ -17,14 +17,16 @@
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
-        // output data of each row
         echo '<div class="row">';
         while($row = mysqli_fetch_assoc($result)) {
             echo '<div class="col-lg-3" style="max-width=100px; max-height=100px"> 
             <figure>
-            <img
+            <form action=view.php method=get>
+            <input type=image
             class="img-thumbnail" src='.$row['imagefile'].'
             />
+            <input name=iddd hidden value='.$row['id'].'></input>
+            </form>
             <figcaption>'.$row['author'].' '.$row['name'].'
             </figcaption> 
             </figure>
