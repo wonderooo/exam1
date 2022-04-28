@@ -17,24 +17,36 @@
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
+        $i = 0;
+        
+        if(!isset($_GET['p'])){
+            $_GET['p'] = 1;
+        }
+
         echo '<div class="row">';
         while($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="col-lg-3" style="max-width=100px; max-height=100px"> 
-            <figure>
-            <form action=view.php method=get>
-            <input type=image
-            class="img-thumbnail" src='.$row['imagefile'].'
-            />
-            <input name=iddd hidden value='.$row['id'].'></input>
-            </form>
-            <figcaption>'.$row['author'].' '.$row['name'].'
-            </figcaption> 
-            </figure>
-            </div>';
+            if ($i >= ($_GET['p']-1) * 8 && $i < (($_GET['p'] -1) * 8) + 8){
+                echo '<div class="col-lg-3" style="max-width=100px; max-height=100px"> 
+                <figure>
+                <form action=view.php method=get>
+                <input type=image
+                class="img-thumbnail" src='.$row['imagefile'].'
+                />
+                <input name=iddd hidden value='.$row['id'].'></input>
+                </form>
+                <figcaption>'.$row['author'].' '.$row['name'].'
+                </figcaption> 
+                </figure>
+                </div>';
+            }
+            $i++;
         }
         echo '</div>';
         } else {
         echo "0 results";
+        }
+        for($it=1; $it<($i/8)+1; $it++){
+            echo '<form action=index.php> <a name=p value='.$it.' href=index.php?p='.$it.' >'.$it.'</a> </form>';
         }
 
         mysqli_close($conn);
