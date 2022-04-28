@@ -1,4 +1,7 @@
 <?php
+require ('vendor/autoload.php');
+$faker = Faker\Factory::create();
+
 $servername = "localhost";
 $username = "kacpers";
 $password = "kacpers";
@@ -18,7 +21,7 @@ for ($i =0; $i < 2; $i++){
     $picsum_w = $json['width']; 
     $picsum_h = $json['height'];
     $timestamp = date("Y-m-d-h-i-sa");
-    $name = rand(1000,9999);
+    $name = $faker->firstName();
     $path = 'images/'.$name.'.png';
     $in = file_get_contents($json['download_url']);
     file_put_contents($path, $in);
