@@ -28,6 +28,29 @@
                     echo '<p> width= '.$row['width'].'</p>';
                     echo '<p> height= '.$row['height'].'</p>';
                     echo '<p> added_at= '.$row['added_at'].'</p>';
+                    $sql2 = "SELECT MAX(id) as max_id, MIN(id) as min_id FROM images";
+                    $result2 = mysqli_query($conn, $sql2);
+                    if (mysqli_num_rows($result2) > 0){
+                        while ($row2 = mysqli_fetch_assoc($result2)){
+                            if ($row['id']== $row2['min_id']){
+                                $prev_id = $row2['max_id'];
+                            }
+                            else{
+                                $prev_id = $row['id'] - 1;
+                            }
+
+                            if ($row['id'] == $row2['max_id']){
+                                $next_id = $row2['min_id'];
+                            }
+                            else{
+                                $next_id = $row['id'] + 1;
+                            }
+                        }
+                    }else{
+                        echo "0 results";
+                    }
+                    echo '<button><a href=view.php?iddd='.$prev_id.'>previous</a></button>';
+                    echo '<button><a href=view.php?iddd='.$next_id.'>next</a></button>';
                 }
                 } else {
                 echo "0 results";
