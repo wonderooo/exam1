@@ -18,7 +18,7 @@
 
         if (mysqli_num_rows($result) > 0) {
         $i = 0;
-        
+
         if(!isset($_GET['p'])){
             $_GET['p'] = 1;
         }
@@ -46,7 +46,7 @@
         echo "0 results";
         }
         for($it=1; $it<($i/8)+1; $it++){
-            echo '<form action=index.php> <a name=p value='.$it.' href=index.php?p='.$it.' >'.$it.'</a> </form>';
+            echo '<form action=index.php style="display: inline"> <a name=p value='.$it.' href=index.php?p='.$it.' >'.$it.'-</a> </form>';
         }
 
         mysqli_close($conn);
